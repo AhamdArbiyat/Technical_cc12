@@ -21,6 +21,9 @@ else
     exit 0
 fi
 
+#Edit 1
+#I have changed the last part of teh if statement from exit 0 to exit 1, the difference is that 0 it would incorrectly report "Script succeeded" — even though nothing was actually calculated and no valid output was produced., while exit 1 indectes correctly reports "Script failed" — which makes sense, since the operation was invalid.
+
 #When a valid input comes, this sction put it in two ways, first it will print it out on the terminal so the user can see it, and second it will write to the file called output.txt
 
 echo "$output"
