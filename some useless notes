@@ -1,0 +1,117 @@
+Notes 22/6
+
+Vulnerability classification:
+1.	Misconfiguration/ weak configuration:
+2.	Default installation / configurations
+3.	Application flaws 
+4.	Poor patch management
+5.	Design flaws
+6.	Default passwords
+7.	Third-party risks.
+8.	Operating system flaws
+9.	Zero-day vulnerability
+10.	Legacy platform vulnerabilities
+11.	Undocumented assets.
+12.	Improper certificate and key management
+13.	Block chain vulnerabilities 
+14.	AI vulnerabilities.
+
+Attack= motive+vuln+method
+
+Path traversal(/../../../../..):
+
+
+Path hijacking:
+The designer hasa not specified the binary should be used so the attacker can't create his own binary to use.
+
+Hypervisor:
+Type one: dual booting
+2nd type: hypervisor usage like VBox, Vmware workstation.
+
+
+
+Containers VS VMs
+
+Like Docker which owns a container engine.
+Container allows OS sharing, 
+
+You can run an OS on top of your main OS
+
+From security perspective, it's the same for both, there is a risk of escaping from container/vm to other one.
+
+
+Need to write you goals using SMART method
+
+
+Cryptography
+1.	Encoding:
+2 way direction, no CIA achived.
+Purpose: limitations, transfer, storage.
+ASCII, Base64, UTF, Unicode, Morse code, URL Encoding.
+2.	Sym encryption
+3.	Asym encryption
+4.	Hashing
+
+
+Important concepts needs to be studied
+Authorization basics:
+DAC
+MAC
+RBAC
+ABAC
+Encryption: changing the content of the data, that no one can read it using key, or pair of keys.
+2way encryption, decryption.
+Sym enc uses 1 key, astym enc uses 2 kyes.
+It's purpose to protect the CIA.
+It's protect AAA
+
+In symmetric enc, when you send the key you need to keep a copy of the with you.
+
+
+We can authenticate the messages, using the private key of A and signed it, and encrypt using the public key of B 
+So B can decrypt using his private key, and fully decrypt it using the public key of A.
+
+Hashing is a one way process, if we use a key turns to HMAC 
+
+
+Hashing roles:
+Collision-resistant (ideally) — it should be extremely hard for two different inputs to produce the same hash, though weaker algorithms like MD5 have known collision vulnerabilities.
+
+The avalanche effect: if we change 1bit in the input, the output should change totally.
+
+FIXED sized.
+
+Every time you hash the same input, gives the same hash output
+
+If you copy the file into many copies, they will have the same hash exactly, name doesn't matter.
+
+
+If breach happens:
+1-	All the passwords are exposed 
+2-	The admin is able to see the passwords.
+3-	Rainbow table
+4-	If 2 users have the same password
+
+Solution:
+Salting:
+A value added to the password and they get hashed together.
+
+Hashing can achive:
+1.	Integrity
+2.	Password management
+
+
+
+
+An MVP (Minimum Viable Product) in business is a product development strategy featuring just enough core functionality to satisfy early adopters and validate a business idea.
+
+
+
+
+
+
+
+
+
+
+
