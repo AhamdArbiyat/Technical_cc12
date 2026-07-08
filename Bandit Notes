@@ -1,0 +1,442 @@
+Bandit 0
+
+First we should look the domain on nslookup
+ it's pretty easy:
+Ssh -p 2220 bandit0@ip 
+Password : bandit0
+
+Bandit01:
+Ssh -p 2220 bandit1@ip
+ 
+Password: 6y2kwnwK6grgvwvpvLaa2T1cpFEKOhNR
+
+Bandit 1 2
+To see the contain of the – file you have to "./-" because of Linux, These files are notoriously tricky to handle because most command-line tools interpret a leading dash as a configuration switch or option flag rather than a literal filename
+
+Bandit 23
+Ssh -p 2220 bandit2@ip 
+
+Pass: PK8fYLZg2hnHSz83plBL1iEPKdD3QToB
+
+cat -- "--spaces in this filename--"
+the double quotes for the spaces in the filename.
+If your filename also starts with - or --, bash will think it's a command-line option instead of a filename. To fix that, use -- to tell the command "everything after this is a filename, not an option".
+
+
+Bandit 3  4
+Ssh -p 2220 bandit3@ip 
+Pass: 7ZZ2LFrykP2zEyvBl4m3clcL7tGYJPME
+We should use ls -a to find the hidden file.
+
+Bandit 4 5 
+Ssh -p 2220 bandit4@ip 
+Pass: xzTXq1rDJQVVAzdv5cHq1TQytTWufAMq
+
+Only the human readable file which is cat ./-file07
+
+Bandit 56
+Ssh -p 2220 bandit5@ip 
+Pass: 6C7h9GD8M6ai5nr7wo1RonrzFjj9yIrG
+
+As the level specify that the password is human readable, is 1033 bytes in size and is non-executable.
+
+So I used this command to find it:
+
+find -readable -size 1033c
+cat ./maybehere07/.file2
+
+c-bytes 
+k-kilobytes (1024 bytes)
+M-megabytes 
+G-gigabytes
+W-2-byte words
+
+Bandit 6 7
+Ssh -p 2220 bandit6@ip
+Pass: Bmnnvf82KzQlfxgAI2d1zYbr1u9pr3E3
+
+As the level specified:
+I used this command:
+Find -user bandit7 -group bandit6 -size 33c
+cat ./var/lib/dpkg/info/bandit7.password
+
+Bandit 7 8
+Ssh -p 2220 bandit7@ip
+Pass: VR1ljMayciFxbnUokuQmJFw6QC9VKtub
+
+To find the password in this huge file I had to use bash commands to extract the needed password
+
+cat data.txt | grep millionth
+
+Bandit 8 9
+Ssh -p 2220 bandit8@ip
+Pass: EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl
+
+To solve this level I used to many ways such as:
+sort data.txt | uniq -c | less
+which will sort the repeated lines and it will count them, and you can find the only repeated once sorted and counted.
+
+And this method which is the best one:
+sort data.txt | uniq -c | sort -n | head -n 1
+sort data.txt — sorts all lines alphabetically (required because uniq only catches duplicates that are adjacent)
+uniq -c — collapses consecutive duplicate lines and prefixes each with a count of how many times it occurred
+sort -n — sorts those counts numerically, smallest first
+head -n 1 — grabs the very first result, i.e. the line with the lowest count (which will be 1 — the line that occurs only once)
+
+
+Bandit 9 10
+Ssh -p 2220 bandit9@ip
+Pass: 	EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl
+
+Dpendig on what the level demanding:
+I used string command:
+	strings data.txt
+
+Bandit 1011
+ 
+Ssh -p 2220 bandit10@ip
+Pass: B0s2khmbT9u0geKuOoVGW3JZKhndE3BG
+
+I used cyberchef to decode the content of the file
+
+pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro
+
+Bandit 1112
+Ssh -p 2220 bandit11@ip
+Pass: pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro
+Again I used cyberchef
+
+Bandit 1213
+Ssh -p 2220 bandit12@ip 
+Password: GROozWPO8QyN0mGrjUkID0WCYkZiQxrN
+It took me a while:
+1.	first I had to create a directory in /tmp
+mktemp -d 
+/tmp/tmp.gLZIkTi3pe
+
+2.	then I had to copy the file from it's directory, to the new directory:
+cp data.txt /tmp/tmp.gLZIkTi3pe
+
+3.	cd /tmp/tmp.gLZIkTi3pe
+4.	xxd -r data.txt > data
+5.	file data
+6.	data: gzip compressed data, was "data2.bin", last modified: Wed Jun 24 14:58:46 2026, max compression, from Unix, original size modulo 2^32 580
+7.	needed to change the extension:
+mv data data.gz
+8.	gzip -d data.gz
+9.	mv data data.bz2
+10.	bzip2 -d data.bz2
+11.	mv data data.gz
+12.	gzip -d data.gz
+13.	mv data data.tar
+14.	tar xf data.tar
+15.	mv data5.bin data.tar
+16.	tar xf data.tar
+17.	mv data6.bin data.bz2
+18.	bzip2 -d data.bz2
+19.	mv data data.tar
+20.	tar xf data.tar
+21.	mv data8.bin data.gz
+22.	gzip -d data.gz
+23.	file data
+data: ASCII text
+
+password is qQYQiHOBPR8zR61qxYqX45quvihF2uzk
+
+Bandit 13 14
+Ssh -p 2220 bandit13@ip
+Password: qQYQiHOBPR8zR61qxYqX45quvihF2uzk
+
+All you need is to copy sshkey.private to the local host  chmod 600 sshkeey.private 
+Ssh -p 2220 bandit14@ 51.20.162.29
+Bandit 14 15
+All we need to do is to setup a netcat connection:
+nc local host 30000
+aaWecNkG4FhxJQxz07uiwzVP6bJiYS65
+
+and it will show:
+pbLYuZtTg4MgaqfJx8jbA9gKKGqM68A7
+
+
+Bandit 15 16
+
+We will need to use the command ncat  --ssl localhost 30001
+pbLYuZtTg4MgaqfJx8jbA9gKKGqM68A7
+
+kS0Hf0u5HiXFwKMKFqXvPdOTNGGa0X8V
+
+Bandit 16 17
+We can use netstat tool to scan ports locally.
+
+Nmap localhost -p 31000-32000
+
+I have tried all the open ports the one how worked is port 31790
+Ncat –ssl localhost 31790
+kS0Hf0u5HiXFwKMKFqXvPdOTNGGa0X8V
+
+it revealed a private key so
+exit
+ssh -i pkey.private -p2220 bandit16@ip
+
+
+Bandit 1718
+All we need is to use diff passwords.new passwords.old 
+And test the two different passwords:
+OQxXZjELndr90zuhOTDYBEomI0SZITXI
+
+Bandit 18 19
+We need to use:
+ssh -t -p 2220 bandit18@51.20.162.29 /bin/sh
+OQxXZjELndr90zuhOTDYBEomI0SZITXI
+
+Choosing /bin/sh as the SSH command bypasses the login-shell startup chain entirely, and even if it somehow did go through a startup file, dash doesn't read . in the first place — so the trap in .bashrc never fires.
+
+Bandit 1920
+ssh -t -p 2220 bandit19@51.20.162.29
+first test the file
+./bandit20-do
+it will that we can run commands while the file execution
+./bandit20-do ls
+
+./bandit20-do cat /etc/bandit_pass/bandit20
+4pIjcunZ0fK2vmp3IwfG8Vf7VhxD6pOA
+
+Bandit 20 21
+ssh -t -p 2220 bandit19@51.20.162.29
+pass: 4pIjcunZ0fK2vmp3IwfG8Vf7VhxD6pOA
+
+so based on this level there is a setuid binary that makes a connection to localhost on the port you specify as a commandline argument.
+
+So we have to setup two terminals:
+One for listening and the other for respond to give us the next level password
+On one of the terminals we need to set:
+cat /etc/bandit_pass/bandit20 | nc -lnvp localhost -p 1234
+
+it will start listening
+
+the other on we need to use the setuid binary to read the password and match it if it correct, it will send os though the listener the next bandit password
+./suconnect 1234
+
+It sent me on the listener this output:
+bW9kBv5WC3P4yoDyf12LSdGuNz5ka6hY
+
+Bandit 2122
+So first lets explore the crons on /etc/cron.d
+ls /etc/cron.d/
+
+cat /etc/cron.d/cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+
+@reboot — run once, whenever the system boots
+bandit22 — run the command as this user (this only appears because it's a system crontab, not a personal one)
+/usr/bin/cronjob_bandit22.sh — the script being executed
+&> /dev/null — redirect both stdout and stderr to /dev/null, i.e. discard all output so nothing gets logged or printed anywhere
+
+
+cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+it dumped all the content on /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+RYVux2rHEm9tiXHmLFzuR7Vhx6AZQMEz
+
+
+Bandit 23 24
+Ssh -p 2220 bandit23@51.20.162.29
+
+Pass: gKXDTAXnIz3OBxiPjRZ2uqutUlPZrBsw
+
+All we need to know is that a program that runs automatically at cron, we need to look in /etc/cron.d 
+Cat cat cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+
+Cat cat cronjob_bandit24
+
+cat /usr/bin/cronjob_bandit24.sh
+it will show us this bash script:
+#!/bin/bash
+
+shopt -s nullglob
+
+myname=$(whoami)
+
+cd /var/spool/"$myname"/foo || exit 
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." ] && [ "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" "./$i")"
+        if [ "${owner}" = "bandit23" ] && [ -f "$i" ]; then
+            timeout -s 9 60 "./$i"
+        fi
+        rm -rf "./$i"
+    fi
+
+this script basically say that is there is a file in /var/spool/bandit24/foo  it will handled and executed every 60 seconds.
+So
+I have created my malicious file script in:
+vi /var/spool/bandit24/foo/payload.sh
+
+The content of the file is:
+#!bin/bash
+
+Cat etc/bandit_pass/bandit24 > /tmp/bandit24pass
+
+This basic script tells the program to run the script to show the password of bandit 24 in /tmp directory where we have the privilege to handle files there.
+
+The password is: hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv
+
+Bandit 24 25
+So basically the level tell us that there is a port  30002 is listening, and to give us the password for bandit 25 all it needs is the password of bandit24 and a pin code.
+So to guess the pin code you need to brute force it and they gave us the range which is 10000 combinations.
+A daemon is a program that runs in the background and provides a service or waits for events without requiring direct user interaction.
+
+So all you need is to write a bash script to do so:
+
+
+first we need to make a directory in /tmp/scripts so we permissions to run the wanted script:
+#!/bin/bash
+for i in {0000..9999}
+do
+        echo "hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv $i"
+done
+
+then we have to give the right permissions to the file script:
+chmod u+x script.sh
+then we need to run this command to get the desired output:
+./script.sh | nc localhost 30002
+Pin code : 0333
+Bandit 25 26
+This a crazy one actually😂😂
+First you need to download the ssh key from bandit 25, and give it the right permissions.
+First we need to know what terminal is running on bandit26
+/etc/passwd
+It showtext
+cat /usr/bin/showtext
+script tells us that it executes more command when the shell is being executed and then it exit and terminate the connection!!
+
+So to face this problem and to gain the advantage of the more tool
+We just need to minimize the terminal screen after we try to connect to the next level
+
+This will happen temporarily, the shell will operate temporarily.
+
+And use v to get the vi edit and write:
+: set shell=/bin/bash 
+:shell 
+And then you will access the terminal
+cat /etc/bandit_pass/bandit26
+jHdv2ELQhT22BkprMNDjybZDAkw1zeBJ
+Bandit 2627
+Nothing much on this level just use the setuid binary file to get the password for the next level
+./bandit27-do cat /etc/bandit_pass/bandit27
+STJLJBRRphMxKB392CT4iOr5CbzPU9ER
+
+Bandit 2728
+For this level all we have to do from the local machine:
+git clone ssh://bandit27-git@bandit.labs.overthewire.org:2220/home/bandit27-git/repo
+
+it will download the the repo folder 
+cd repo
+cat README
+y8Yd2ssKcpHpud7UvOSOxwamRMzIGIeQ
+
+Bandit 28 29
+Just like what we did in the previous level, but this time they hide the password
+So all we need to is to use this command:
+git show REDME.md
+
+and the password will appear.
+
+git show displays information about Git objects.
+
+Those objects can include:
+
+A commit
+A tag
+A branch
+A file from a specific commit
+Other Git objects
+Bandit 29 30
+So there is multiple branches in the repo so we need to find, which branch exits for our project:
+We need to use:
+Git branch -a
+To show all branches
+So that will show us 2 branches
+
+We will use git checkout dev 
+ We will have a README.md file 
+Cat README.md 
+jq9Dfg2rXsfYsWMgFuKlXhphjdH7USgX
+
+
+Bandit 30 31
+
+Git branch -a
+Nothing
+Git log README.md
+Nothing 
+
+So we needed to use:
+Git tag 
+This command list all tags.
+A tag is a permanent label attached to a specific commit. Unlike a branch, a tag does not move when new commits are made.
+
+That command showed us a secret
+
+Git show secret
+82NkymblpGBYmIXG6ZQ8YldBYstHpfUf
+
+Bandit 3132
+To create a file and push it to a remote branch we need to use this:
+echo 'May I come in?' > key.txt
+
+cat .gitignore 
+*.txt
+
+This means that every file with the extension .txt will be ignored.
+
+git add -f key.txt
+this command used to force adding the key.txt file.
+
+git status        
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   key.txt
+
+this is used to confirm the changes and that the file was added.
+
+Then we used to add a message to commit the file:
+git commit -m 'Add the key.txt file...'
+
+$git push
+
+remote: ### Attempting to validate files... ####
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+remote: Well done! Here is the password for the next level:
+remote: pWuj5jBQ6IgV0NXwiH6g1pXRF8S1YvbT
+
+
+Bandit 3233
+
+Just use ctrl + c
+Find the pass in /etc/bandit_pass/bandit 33
+$0 is a special shell variable that contains the name of the current shell or script.
+
+
+
+
+
+
+
